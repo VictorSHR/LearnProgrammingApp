@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,29 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        Toolbar main_toolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(main_toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragmentLayout, MainFragment.newInstance()).commit();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar, menu);
-        return true;
-    }
-
-    @SuppressLint("ResourceType")
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.xml.slide_in, R.xml.slide_out);
-        ft.replace(R.id.fragmentLayout, SettingsFragment.newInstance()).commit();
-
-        // switch (item.getItemId() == R.id.action_settings)
-
-        return true;
+        ft.replace(R.id.MainConstraintLayout, MainFragment.newInstance()).commit();
     }
 }
