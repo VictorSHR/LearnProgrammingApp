@@ -11,6 +11,14 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('LearnProgrammingApp.jks')
+            keyAlias 'key0'
+            keyPassword 'toprograms2020'
+            storePassword 'toprograms2020'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
