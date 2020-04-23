@@ -9,7 +9,7 @@
     tools:context=".MainFragment">
 
     <ScrollView
-        android:id="@+id/ScroolViewMainMenu"
+        android:id="@+id/ScrollViewMainMenu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/fon"
@@ -34,12 +34,8 @@
                 android:src="@drawable/ic_main"
                 tools:ignore="RtlHardcoded" />
 
-<<<<<<< android:Updated
-            upstream
-            =======
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/menu"
+                android:id="@+id/constraintLayoutOnScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="800dp"
                 android:background="@drawable/cardview2">
@@ -54,8 +50,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> Stashed changes
-
         </LinearLayout>
     </ScrollView>
 
