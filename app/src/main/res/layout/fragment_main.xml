@@ -34,30 +34,27 @@
                 android:src="@drawable/ic_main"
                 tools:ignore="RtlHardcoded" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewMainMenu"
+<<<<<<< android:Updated
+            upstream
+            =======
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/menu"
                 android:layout_width="match_parent"
-                android:layout_height="1600dp"
-                android:layout_marginTop="10dp">
-                <!--app:cardBackgroundColor="?android:attr/panelBackground"-->
+                android:layout_height="800dp"
+                android:background="@drawable/cardview2">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayoutInCardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cardview">
-
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="175dp"
-                        android:layout_marginEnd="15dp"
-                        android:text="Button"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="Button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> Stashed changes
 
         </LinearLayout>
     </ScrollView>
