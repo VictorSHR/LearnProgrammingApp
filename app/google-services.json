@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "904483224165",
+    "firebase_url": "https://learnprogrammingapp-3c0cf.firebaseio.com",
+    "project_id": "learnprogrammingapp-3c0cf",
+    "storage_bucket": "learnprogrammingapp-3c0cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904483224165:android:15a1fb2fe92e254f5ce48c",
+        "android_client_info": {
+          "package_name": "com.mop.learnprogrammingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904483224165-51r162109qmsd2dejhfd0nn4cnac910d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mop.learnprogrammingapp",
+            "certificate_hash": "a178d0fdff1a7299b9080032d8e5187934692722"
+          }
+        },
+        {
+          "client_id": "904483224165-l1jnpfhgfccklk0mumfdr3i3s6d0bu0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe2ZxTBEE2Xbuk0lbKtStQXa3_PC4Yk0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904483224165-l1jnpfhgfccklk0mumfdr3i3s6d0bu0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
