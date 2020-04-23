@@ -19,8 +19,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linLayoutMainMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageButton
@@ -34,12 +35,14 @@
                 tools:ignore="RtlHardcoded" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewMainMenu"
                 android:layout_width="match_parent"
                 android:layout_height="1600dp"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="?android:attr/panelBackground">
+                android:layout_marginTop="10dp">
+                <!--app:cardBackgroundColor="?android:attr/panelBackground"-->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayoutInCardView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/cardview">

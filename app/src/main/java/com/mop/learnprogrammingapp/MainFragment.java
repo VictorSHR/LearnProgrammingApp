@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import java.util.Objects;
 
 public class MainFragment extends Fragment {
-    public static MainFragment newInstance() {
+    static MainFragment newInstance() {
         return new MainFragment();
     }
 

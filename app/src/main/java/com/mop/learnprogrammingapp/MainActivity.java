@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.MainConstraintLayout, MainFragment.newInstance()).commit();
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.MainConstraintLayout, MainFragment.newInstance()).commit();
     }
 }
