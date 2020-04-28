@@ -143,6 +143,7 @@
                 app:cardBackgroundColor="#F4FF81"
                 app:cardCornerRadius="5dp"
                 android:layout_gravity="center"
+<<<<<<< Updated upstream
                 app:cardElevation="15dp">
 
                 <LinearLayout
@@ -208,6 +209,10 @@
                             android:src="@mipmap/ic_launcher"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+=======
+                android:name="cardElevation">
+
+>>>>>>> Stashed changes
 =======
                 android:name="cardElevation">
 
@@ -355,6 +360,7 @@
                     android:orientation="vertical">
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="282dp"
@@ -387,14 +393,19 @@
                             app:layout_constraintTop_toTopOf="parent" />
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                         <ImageView
