@@ -41,9 +41,12 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:10.2.0'
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
     compile 'com.google.android.gms:play-services-auth:10.2.0'
 }
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
