@@ -12,15 +12,7 @@
         android:id="@+id/ScrollViewMainMenu"
         android:layout_width="0dp"
         android:layout_height="0dp"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        android:background="@drawable/fon"
-=======
         android:background="@color/color_menu_1"
->>>>>>> Stashed changes
-=======
-        android:background="@color/color_menu_1"
->>>>>>> Stashed changes
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +51,29 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 =======
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                app:cardBackgroundColor="#F4FF81"
+                app:cardCornerRadius="5dp"
+                android:layout_gravity="center"
+                android:name="cardElevation">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/hello_menu"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
