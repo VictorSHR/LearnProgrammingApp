@@ -13,7 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         android:background="@drawable/fon"
+=======
+        android:background="@color/color_menu_1"
+>>>>>>> Stashed changes
 =======
         android:background="@color/color_menu_1"
 >>>>>>> Stashed changes
