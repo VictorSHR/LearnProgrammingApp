@@ -41,6 +41,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animation_view"
                 android:layout_width="wrap_content"
@@ -48,6 +49,8 @@
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@anim/19669-coffe-meditation" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -71,6 +74,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                 android:layout_height="1600dp"
                 android:layout_marginTop="15dp">
@@ -79,6 +83,9 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 android:layout_height="850dp"
+=======
+                android:layout_height="900dp"
+>>>>>>> Stashed changes
 =======
                 android:layout_height="900dp"
 >>>>>>> Stashed changes
