@@ -36,7 +36,6 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-<<<<<<< Updated upstream
                 android:layout_height="800dp"
                 android:background="@drawable/cardview2">
 
@@ -50,7 +49,22 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-=======
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/hello_menu"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -81,44 +95,7 @@
                 app:cardBackgroundColor="#F4FF81"
                 app:cardCornerRadius="5dp"
                 android:layout_gravity="center"
-                android:name="cardElevation">
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="15dp"
-                app:cardBackgroundColor="#F4FF81"
-                app:cardCornerRadius="5dp"
-                android:layout_gravity="center"
-                android:name="cardElevation">
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="15dp"
-                app:cardBackgroundColor="#F4FF81"
-                app:cardCornerRadius="5dp"
-                android:layout_gravity="center"
-                app:cardElevation="15dp">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/hello_menu"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/design_default_color_on_secondary"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="15dp"
-                app:cardBackgroundColor="#F4FF81"
-                app:cardCornerRadius="5dp"
-                android:layout_gravity="center"
-<<<<<<< Updated upstream
                 app:cardElevation="15dp">
 
                 <LinearLayout
@@ -143,18 +120,15 @@
                 app:cardBackgroundColor="#F4FF81"
                 app:cardCornerRadius="5dp"
                 android:layout_gravity="center"
-<<<<<<< Updated upstream
+
                 app:cardElevation="15dp">
 
-                <LinearLayout
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
@@ -165,7 +139,7 @@
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="24sp"
                     android:textStyle="bold" />
-<<<<<<< Updated upstream
+
             </androidx.cardview.widget.CardView>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -209,14 +183,7 @@
                             android:src="@mipmap/ic_launcher"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-=======
-                android:name="cardElevation">
 
->>>>>>> Stashed changes
-=======
-                android:name="cardElevation">
-
->>>>>>> Stashed changes
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
@@ -309,8 +276,7 @@
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="24sp"
                     android:textStyle="bold" />
-=======
->>>>>>> Stashed changes
+
             </androidx.cardview.widget.CardView>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -391,23 +357,15 @@
                             android:textSize="14sp"
                             app:layout_constraintStart_toEndOf="@+id/imageView3"
                             app:layout_constraintTop_toTopOf="parent" />
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
                         <ImageView
                             android:id="@+id/imageView1"
                             android:layout_width="100dp"
