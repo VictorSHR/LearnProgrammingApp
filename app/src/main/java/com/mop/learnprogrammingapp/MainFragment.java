@@ -53,9 +53,9 @@ public class MainFragment extends Fragment {
                     R.drawable.ic_video_outline_28), "Lesson " + i));
         }
 
-        AdapterCardViewCourse adapterCardViewPython = new AdapterCardViewCourse(PythonList);
-        AdapterCardViewCourse adapterCardViewCPlus = new AdapterCardViewCourse(CPlusList);
-        AdapterCardViewCourse adapterCardViewCSharp = new AdapterCardViewCourse(CSharpList);
+        AdapterCardViewCourse adapterCardViewPython = new AdapterCardViewCourse(getContext(), PythonList);
+        AdapterCardViewCourse adapterCardViewCPlus = new AdapterCardViewCourse(getContext(), CPlusList);
+        AdapterCardViewCourse adapterCardViewCSharp = new AdapterCardViewCourse(getContext(), CSharpList);
 
         recyclerViewPythonLessons.setAdapter(adapterCardViewPython);
         recyclerViewCPlusLessons.setAdapter(adapterCardViewCPlus);
