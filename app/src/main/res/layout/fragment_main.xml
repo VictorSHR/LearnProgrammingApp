@@ -34,13 +34,22 @@
                 android:src="@drawable/ic_main"
                 tools:ignore="RtlHardcoded" />
 
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@anim/19669-coffe-meditation" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutOnScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="800dp"
+                android:layout_height="850dp"
                 android:background="@drawable/cardview2">
 
                 <ImageButton
+<<<<<<< HEAD
                     android:id="@+id/buttonPlay"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
@@ -68,10 +77,16 @@
                     android:id="@+id/buttonOpenSettings4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+=======
+                    android:id="@+id/buttonOpenSettings4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+>>>>>>> master
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="25dp"
                     android:background="@drawable/play"
                     app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
                     app:layout_constraintTop_toBottomOf="@+id/Training_courses" />
 
                 <TextView
@@ -92,6 +107,14 @@
                     android:id="@+id/Training_courses"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+=======
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOpenSettings3" />
+
+                <ImageButton
+                    android:id="@+id/buttonOpenSettings3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+>>>>>>> master
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="275dp"
                     android:background="@drawable/code1"
