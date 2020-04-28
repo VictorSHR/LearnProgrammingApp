@@ -6,7 +6,7 @@
     <color name="color_menu_1">#82B1FF</color>
     <color name="color_menu_2">#FFD180</color>
 
-    <color name="bg_login">#26ae90</color>
+    <color name="bg_login">#26AE90</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>
     <color name="white">#ffffff</color>
@@ -16,7 +16,7 @@
     <color name="input_register_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
     <color name="btn_login">#26ae90</color>
-    <color name="btn_login_bg">#eceef1</color>
+    <color name="btn_login_bg">#ECEEF1</color>
     <color name="lbl_name">#333333</color>
-    <color name="btn_logut_bg">#ff6861</color>
+    <color name="btn_logut_bg">#FF6861</color>
 </resources>
