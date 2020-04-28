@@ -37,6 +37,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animation_view"
                 android:layout_width="wrap_content"
@@ -50,10 +51,13 @@
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutOnScrollView"
                 android:layout_width="match_parent"
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< HEAD
                 android:layout_height="1600dp"
@@ -63,6 +67,9 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 android:layout_height="850dp"
+=======
+                android:layout_height="900dp"
+>>>>>>> Stashed changes
 =======
                 android:layout_height="900dp"
 >>>>>>> Stashed changes
