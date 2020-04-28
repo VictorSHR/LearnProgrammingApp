@@ -51,6 +51,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutOnScrollView"
                 android:layout_width="match_parent"
+<<<<<<< HEAD
+                android:layout_height="1600dp"
+                android:layout_marginTop="15dp">
+                <!--app:cardBackgroundColor="?android:attr/panelBackground"-->
+=======
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 android:layout_height="850dp"
@@ -61,9 +66,9 @@
                 android:layout_height="900dp"
 >>>>>>> Stashed changes
                 android:background="@drawable/cardview2">
+>>>>>>> master
 
                 <ImageButton
-<<<<<<< HEAD
                     android:id="@+id/buttonPlay"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
@@ -91,16 +96,13 @@
                     android:id="@+id/buttonOpenSettings4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-=======
                     android:id="@+id/buttonOpenSettings4"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
->>>>>>> master
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="25dp"
                     android:background="@drawable/play"
                     app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
                     app:layout_constraintTop_toBottomOf="@+id/Training_courses" />
 
                 <TextView
@@ -121,14 +123,12 @@
                     android:id="@+id/Training_courses"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-=======
                     app:layout_constraintTop_toBottomOf="@+id/buttonOpenSettings3" />
 
                 <ImageButton
                     android:id="@+id/buttonOpenSettings3"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
->>>>>>> master
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="275dp"
                     android:background="@drawable/code1"
