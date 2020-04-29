@@ -1,6 +1,7 @@
 package com.mop.learnprogrammingapp;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,7 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
 import java.util.Objects;
+
+import im.dacer.androidcharts.LineView;
 
 public class SettingsFragment extends Fragment {
     public static SettingsFragment newInstance() {
@@ -41,6 +45,31 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        ArrayList<String> strList = new ArrayList<>();
+        ArrayList<ArrayList<Float>> dataLists = new ArrayList<>();
+
+        ArrayList<Float> dataList1 = new ArrayList<>();
+        ArrayList<Float> dataList2 = new ArrayList<>();
+
+        strList.add("Monday");
+        strList.add("Tuesday");
+        strList.add("Wednesday");
+        strList.add("Thursday");
+        strList.add("Friday");
+        strList.add("Saturday");
+        strList.add("Friday");
+
+
+        ArrayList.add(dataList1);
+        ArrayList.add(dataList2);
+
+
+        LineView lineView = view.findViewById(R.id.line_view);
+        lineView.setDrawDotLine(false); //optional
+        lineView.setShowPopup(LineView.SHOW_POPUPS_MAXMIN_ONLY); //optional
+        lineView.setBottomTextList(strList);
+        lineView.setColorArray(new int[]{Color.BLACK,Color.GREEN,Color.GRAY,Color.CYAN});
+        lineView.setDataList(dataLists); //or lineView.setFloatDataList(floatDataLists)
         return view;
     }
 
