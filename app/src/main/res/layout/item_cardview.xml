@@ -6,6 +6,7 @@
     android:layout_height="110dp"
     android:layout_margin="10dp"
     android:clickable="true"
+    android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="12dp"
     app:cardElevation="7dp">
@@ -14,7 +15,7 @@
         android:id="@+id/nestedLinLayoutItemCourse"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/corner_radius_item"
+        android:background="@drawable/corner_radius_item_python"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp">

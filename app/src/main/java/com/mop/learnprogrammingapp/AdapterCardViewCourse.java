@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewCourse.CardViewHolder> {
@@ -34,6 +36,21 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
 
     @Override
     public void onBindViewHolder(final CardViewHolder cardViewHolder, final int position) {
+        switch(cards.get(position).getCourse()) {
+            case "PYTHON":
+                cardViewHolder.linLayoutCard.setBackground(cardViewHolder.itemView.getResources()
+                        .getDrawable(R.drawable.corner_radius_item_python));
+                break;
+            case "CPLUS":
+                cardViewHolder.linLayoutCard.setBackground(cardViewHolder.itemView.getResources()
+                        .getDrawable(R.drawable.corner_radius_item_cplus));
+                break;
+            case "CSHARP":
+                cardViewHolder.linLayoutCard.setBackground(cardViewHolder.itemView.getResources()
+                        .getDrawable(R.drawable.corner_radius_item_csharp));
+                break;
+        }
+
         cardViewHolder.img.setImageDrawable(cards.get(position).getImg());
         cardViewHolder.lesson.setText(cards.get(position).getLesson());
     }
@@ -44,12 +61,14 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
     static class CardViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
         TextView lesson;
+        LinearLayout linLayoutCard;
 
         CardViewHolder(@NonNull View itemView) {
             super(itemView);
 
             img = itemView.findViewById(R.id.imgItemCourse);
             lesson = itemView.findViewById(R.id.textViewItemCourse);
+            linLayoutCard = itemView.findViewById(R.id.nestedLinLayoutItemCourse);
         }
     }
 }

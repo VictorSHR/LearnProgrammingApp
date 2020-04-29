@@ -30,3 +30,4 @@ public class MainActivity extends AppCompatActivity {
                 replace(R.id.MainConstraintLayout, MainFragment.newInstance()).commit();
     }
 }
+
