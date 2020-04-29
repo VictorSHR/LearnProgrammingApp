@@ -41,31 +41,6 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String currentCourse = sharedPreferences.getString("CURRENT_COURSE", "NONE");
-
-        CardView cardViewCurrentCourse = view.findViewById(R.id.cardViewCurrentCourse);
-        LinearLayout linLayoutCurrentCourseCard = view.findViewById(R.id.linLayoutCurrentCourseCard);
-        ImageView imgCurrentCourseCard = view.findViewById(R.id.imgCurrentCourseCard);
-        TextView textViewCurrentCourseCard = view.findViewById(R.id.textViewCurrentCourseCard);
-        ImageButton imgButtonSettings = view.findViewById(R.id.imgButtonSettings);
-
-        if(currentCourse.equals(LIST_COURSES[0]))
-            linLayoutCurrentCourseCard.setBackground(view.getResources().getDrawable(R.drawable.corner_radius_item_python));
-        else if(currentCourse.equals(LIST_COURSES[1]))
-            linLayoutCurrentCourseCard.setBackground(view.getResources().getDrawable(R.drawable.corner_radius_item_cplus));
-        else if(currentCourse.equals(LIST_COURSES[2]))
-            linLayoutCurrentCourseCard.setBackground(view.getResources().getDrawable(R.drawable.corner_radius_item_csharp));
-        else {
-            linLayoutCurrentCourseCard.setBackground(view.getResources().getDrawable(R.drawable.corner_radius_item_current_course));
-            cardViewCurrentCourse.setClickable(false);
-            cardViewCurrentCourse.setFocusable(false);
-            imgCurrentCourseCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_education_100));
-            textViewCurrentCourseCard.setTextColor(getResources().getColor(R.color.btn_login_bg));
-            textViewCurrentCourseCard.setTextSize(22);
-            textViewCurrentCourseCard.setText("Начните проходить курсы уже прямо сейчас!");
-        }
-
         RecyclerView recyclerViewPythonLessons = view.findViewById(R.id.recyclerViewPythonLessons);
         RecyclerView recyclerViewCPlusLessons = view.findViewById(R.id.recyclerViewCPlusLessons);
         RecyclerView recyclerViewCSharpLessons = view.findViewById(R.id.recyclerViewCSharpLessons);
