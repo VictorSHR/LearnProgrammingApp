@@ -25,8 +25,8 @@
                 android:id="@+id/cardViewToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/colorPrimary"
-                app:cardCornerRadius="0dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="2dp"
                 app:cardElevation="4dp">
 
                 <RelativeLayout
@@ -60,12 +60,12 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewPeople"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_margin="8dp"
+                android:layout_height="200dp"
+                android:layout_margin="4dp"
                 app:cardBackgroundColor="@color/colorPrimary"
-                app:cardUseCompatPadding="true"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="7dp">
+                app:cardElevation="7dp"
+                app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:text="Профиль"
-                        android:textColor="@color/color_menu_1"
+                        android:textColor="@color/btn_login_bg"
                         android:textSize="24sp"
                         android:textStyle="bold|italic"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +102,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="50dp"
                         android:text="- Name Fame (lvl)"
-                        android:textColor="@color/color_menu_1"
+                        android:textColor="@color/btn_login_bg"
                         android:textSize="18sp"
                         android:textStyle="italic"
                         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -115,63 +115,42 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="50dp"
                         android:text="12"
-                        android:textColor="@color/color_menu_1"
+                        android:textColor="@color/btn_login_bg"
                         android:textSize="18sp"
                         app:layout_constraintStart_toEndOf="@+id/textView2"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_money_circle_outline_28"
-                        app:layout_constraintStart_toEndOf="@+id/textView5"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="20dp"
                         android:text="999"
-                        android:textColor="@color/color_menu_1"
+                        android:textColor="@color/btn_login_bg"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/imageView2"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="95dp"
-                        android:text="Тут будут занчки достижений"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/color_menu_1"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
+                    <lecho.lib.hellocharts.view.LineChartView
+                        android:id="@+id/chart"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="125dp"
-                        android:src="@drawable/ic_line1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="parent" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -179,10 +158,22 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewMenu"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="4dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="7dp"
+                app:cardUseCompatPadding="true">
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewStatistic"
                 android:layout_width="match_parent"
                 android:layout_height="700dp"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 app:cardBackgroundColor="@color/colorPrimary"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="12dp"
@@ -206,15 +197,31 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <view
-                        android:id="@+id/line_view"
-                        class="im.dacer.androidcharts.LineView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="300dp"
-                        android:layout_marginTop="5dp"
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textVie" />
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <view
+                                android:id="@+id/line_view"
+                                class="im.dacer.androidcharts.LineView"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginTop="5dp" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -222,8 +229,8 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animation_view1"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
