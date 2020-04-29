@@ -47,6 +47,7 @@ dependencies {
     implementation 'im.dacer:AndroidCharts:1.0.4@aar'
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }
 
 

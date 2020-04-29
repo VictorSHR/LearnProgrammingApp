@@ -19,6 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -34,7 +37,7 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @SuppressLint("WrongConstant")
+    @SuppressLint({"WrongConstant", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +45,14 @@ public class MainFragment extends Fragment {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String currentCourse = sharedPreferences.getString("CURRENT_COURSE", "NONE");
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(Objects.requireNonNull(getActivity()));
+
+        if (acct != null)
+            ((TextView) view.findViewById(R.id.textViewNameUser))
+                    .setText("Hello, " + acct.getGivenName() + "!");
+        else
+            view.findViewById(R.id.textViewNameUser).setVisibility(View.INVISIBLE);
 
         CardView cardViewCurrentCourse = view.findViewById(R.id.cardViewCurrentCourse);
         LinearLayout linLayoutCurrentCourseCard = view.findViewById(R.id.linLayoutCurrentCourseCard);
