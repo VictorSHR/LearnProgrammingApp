@@ -96,7 +96,6 @@ public class MainFragment extends Fragment {
         recyclerViewCPlusLessons.setAdapter(adapterCardViewCPlus);
         recyclerViewCSharpLessons.setAdapter(adapterCardViewCSharp);
 
-        ImageButton imgButtonSettings = view.findViewById(R.id.imgButtonSettings);
         imgButtonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
