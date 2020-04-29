@@ -14,14 +14,13 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Set;
 
 public class MainFragment extends Fragment {
     private String[] LIST_COURSES = new String[]{"PYTHON", "CPLUS", "CSHARP"};
@@ -48,6 +47,7 @@ public class MainFragment extends Fragment {
         LinearLayout linLayoutCurrentCourseCard = view.findViewById(R.id.linLayoutCurrentCourseCard);
         ImageView imgCurrentCourseCard = view.findViewById(R.id.imgCurrentCourseCard);
         TextView textViewCurrentCourseCard = view.findViewById(R.id.textViewCurrentCourseCard);
+        ImageButton imgButtonSettings = view.findViewById(R.id.imgButtonSettings);
 
         if(currentCourse.equals(LIST_COURSES[0]))
             linLayoutCurrentCourseCard.setBackground(view.getResources().getDrawable(R.drawable.corner_radius_item_python));

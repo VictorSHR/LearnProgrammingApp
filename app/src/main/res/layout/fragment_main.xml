@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.nirhart.parallaxscroll.views.ParallaxScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.nirhart.parallaxscroll.views.ParallaxScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollViewMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
     android:overScrollMode="never"
+    android:scrollbars="none"
     tools:context=".MainFragment">
 
-    <LinearLayout
-        android:id="@+id/linLayoutMain"
+    <RelativeLayout
+        android:id="@+id/relativeLayoutMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:id="@+id/RelativeLayoutToolbar"
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="200dp"
             android:background="@drawable/background_top_panel">
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutMainContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:id="@+id/imgStars"
@@ -35,8 +40,8 @@
                 android:id="@+id/textViewCountStars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_toEndOf="@+id/imgStars"
                 android:text="0"
@@ -56,109 +61,119 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="8dp"
                 android:src="@drawable/ic_user_circle_35" />
-        </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewCurrentCourse"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_margin="8dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/color_menu_2"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="7dp">
-
-            <LinearLayout
-                android:id="@+id/linLayoutCurrentCourseCard"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewCurrentCourse"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/corner_radius_item_current_course"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="300dp"
+                android:layout_below="@+id/imgButtonSettings"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/color_menu_2"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="7dp"
+                app:cardUseCompatPadding="true">
 
-                <ImageView
-                    android:id="@+id/imgCurrentCourseCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_play_100" />
+                <LinearLayout
+                    android:id="@+id/linLayoutCurrentCourseCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/corner_radius_item_current_course"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/textViewCurrentCourseCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Resume"
-                    android:textAlignment="center"
-                    android:textColor="@color/bg_register"
-                    android:textSize="24sp" />
+                    <ImageView
+                        android:id="@+id/imgCurrentCourseCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_play_100" />
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/textViewCurrentCourseCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Resume"
+                        android:textAlignment="center"
+                        android:textColor="@color/bg_register"
+                        android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textViewPython"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="12dp"
-            android:text="Python"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewPythonLessons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_cardview" />
+            <TextView
+                android:id="@+id/textViewPython"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardViewCurrentCourse"
+                android:layout_gravity="left"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="Python"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textViewCPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="12dp"
-            android:text="C++"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPythonLessons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewPython"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_cardview" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewCPlusLessons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_cardview" />
+            <TextView
+                android:id="@+id/textViewCPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recyclerViewPythonLessons"
+                android:layout_gravity="left"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="C++"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textViewCSharp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="12dp"
-            android:text="C#"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCPlusLessons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCPlus"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_cardview" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewCSharpLessons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_cardview" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textViewCSharp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recyclerViewCPlusLessons"
+                android:layout_gravity="left"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="C#"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCSharpLessons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCSharp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_cardview" />
+        </RelativeLayout>
+    </RelativeLayout>
 </com.nirhart.parallaxscroll.views.ParallaxScrollView>
