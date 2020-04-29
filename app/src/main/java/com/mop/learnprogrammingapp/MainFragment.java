@@ -14,16 +14,8 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< Updated upstream
-<<<<<<<
+import android.widget.ImageView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-=======
-import android.widget.ImageView;
->>>>>>>
-=======
-import android.widget.ImageView;
->>>>>>> Stashed changes
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
