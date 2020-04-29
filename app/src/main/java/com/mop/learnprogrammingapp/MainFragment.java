@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,11 +14,14 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Set;
 
 public class MainFragment extends Fragment {
     private String[] LIST_COURSES = new String[]{"PYTHON", "CPLUS", "CSHARP"};
@@ -44,6 +48,7 @@ public class MainFragment extends Fragment {
         LinearLayout linLayoutCurrentCourseCard = view.findViewById(R.id.linLayoutCurrentCourseCard);
         ImageView imgCurrentCourseCard = view.findViewById(R.id.imgCurrentCourseCard);
         TextView textViewCurrentCourseCard = view.findViewById(R.id.textViewCurrentCourseCard);
+        ImageButton imgButtonSettings = view.findViewById(R.id.imgButtonSettings);
 
         if(currentCourse.equals(LIST_COURSES[0]))
             linLayoutCurrentCourseCard.setBackground(view.getResources().getDrawable(R.drawable.corner_radius_item_python));
@@ -92,15 +97,15 @@ public class MainFragment extends Fragment {
         recyclerViewCPlusLessons.setAdapter(adapterCardViewCPlus);
         recyclerViewCSharpLessons.setAdapter(adapterCardViewCSharp);
 
-        /*button_Training_courses.setOnClickListener(new View.OnClickListener() {
+        imgButtonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                 ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
                         R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-                ft.replace(R.id.MainConstraintLayout, Menu_Training_courses.newInstance()).commit();
+                ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
             }
-        });*/
+        });
 
         return view;
     }

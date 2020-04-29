@@ -13,9 +13,9 @@ import android.widget.ImageButton;
 
 import java.util.Objects;
 
-public class Menu_Training_courses extends Fragment {
-    static Menu_Training_courses newInstance() {
-        return new Menu_Training_courses();
+public class MenuTrainingCourses extends Fragment {
+    static MenuTrainingCourses newInstance() {
+        return new MenuTrainingCourses();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Menu_Training_courses extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_menu__training_courses, container, false);
+        View view = inflater.inflate(R.layout.activity_menu_training_courses, container, false);
 
         ImageButton buttonBackToMainMenu = view.findViewById(R.id.buttonBackToMainMenu);
         buttonBackToMainMenu.setOnClickListener(new View.OnClickListener() {

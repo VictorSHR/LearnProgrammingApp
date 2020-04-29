@@ -13,7 +13,7 @@
 
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,RtlEnabled,UnusedAttribute">
-        <activity android:name=".Menu_Training_courses"></activity>
+        <activity android:name=".MenuTrainingCourses"></activity>
         <activity android:name=".Registr" />
 
         <activity android:name=".MainActivity">

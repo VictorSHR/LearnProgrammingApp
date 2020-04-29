@@ -18,7 +18,8 @@ import java.util.Objects;
 import im.dacer.androidcharts.LineView;
 
 public class SettingsFragment extends Fragment {
-    public static SettingsFragment newInstance() {
+
+    static SettingsFragment newInstance() {
         return new SettingsFragment();
     }
 
@@ -48,9 +49,6 @@ public class SettingsFragment extends Fragment {
         ArrayList<String> strList = new ArrayList<>();
         ArrayList<ArrayList<Float>> dataLists = new ArrayList<>();
 
-        ArrayList<Float> dataList1 = new ArrayList<>();
-        ArrayList<Float> dataList2 = new ArrayList<>();
-
         strList.add("Monday");
         strList.add("Tuesday");
         strList.add("Wednesday");
@@ -59,17 +57,23 @@ public class SettingsFragment extends Fragment {
         strList.add("Saturday");
         strList.add("Friday");
 
+        ArrayList<Float> dataListF2 = new ArrayList<>();
+        float randomF = (int) (Math.random() * 9 + 1);
+        for (int i = 0; i < 7; i++) dataListF2.add((float) (Math.random() * randomF));
 
-        ArrayList.add(dataList1);
-        ArrayList.add(dataList2);
+        ArrayList<Float> dataListF3 = new ArrayList<>();
+        randomF = (int) (Math.random() * 9 + 1);
+        for (int i = 0; i < 7; i++) dataListF3.add((float) (Math.random() * randomF));
 
+        dataLists.add(dataListF2);
+        dataLists.add(dataListF3);
 
         LineView lineView = view.findViewById(R.id.line_view);
-        lineView.setDrawDotLine(false); //optional
-        lineView.setShowPopup(LineView.SHOW_POPUPS_MAXMIN_ONLY); //optional
+        lineView.setDrawDotLine(false);
+        lineView.setShowPopup(LineView.SHOW_POPUPS_MAXMIN_ONLY);
         lineView.setBottomTextList(strList);
         lineView.setColorArray(new int[]{Color.BLACK,Color.GREEN,Color.GRAY,Color.CYAN});
-        lineView.setDataList(dataLists); //or lineView.setFloatDataList(floatDataLists)
+        lineView.setFloatDataList(dataLists);
         return view;
     }
 
