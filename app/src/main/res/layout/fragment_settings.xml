@@ -46,7 +46,7 @@
                         android:src="@drawable/ic_back2" />
 
                     <ImageButton
-                        android:id="@+id/imgButtonSettings2"
+                        android:id="@+id/ButtonSettings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -167,6 +167,80 @@
                 app:cardElevation="7dp"
                 app:cardUseCompatPadding="true">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:text="Игры"
+                        android:textColor="@color/btn_login_bg"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageGame"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/ic_game_outline_28"
+                        app:layout_constraintEnd_toStartOf="@+id/textView4"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <HorizontalScrollView
+                        android:layout_width="377dp"
+                        android:layout_height="123dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal" >
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center"
+                                />
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center"
+                                />
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center"
+                                />
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center"
+                                />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -183,6 +257,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:id="@+id/imageStastistic"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/ic_poll_square_outline_28"
+                        app:layout_constraintEnd_toStartOf="@+id/textVie"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/textVie"
                         android:layout_width="wrap_content"
@@ -190,8 +273,9 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:text="Статистика"
-                        android:textColor="@color/color_menu_1"
+                        android:textColor="@color/btn_login_bg"
                         android:textSize="24sp"
+                        android:layout_marginStart="5dp"
                         android:textStyle="bold|italic"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -199,6 +283,7 @@
 
 
                     <HorizontalScrollView
+                        android:id="@+id/Horizontal_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -222,6 +307,21 @@
                         </LinearLayout>
                     </HorizontalScrollView>
 
+                    <com.db.williamchart.view.DonutChartView
+                        android:id="@+id/donutChart"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        app:chart_donutBackgroundColor="#70977F"
+                        app:chart_donutRoundCorners="true"
+                        app:chart_donutThickness="15dp"
+                        app:chart_donutTotal="200"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Horizontal_view" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

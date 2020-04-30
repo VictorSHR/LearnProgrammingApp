@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_margin="15dp"
-                android:background="@drawable/ic_back"
+                android:background="@drawable/ic_back2"
                 android:backgroundTint="@color/common_google_signin_btn_text_dark_focused"
                 android:tint="#7DCCFC"
                 tools:ignore="RtlHardcoded" />

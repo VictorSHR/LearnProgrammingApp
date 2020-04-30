@@ -46,6 +46,19 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        ImageButton buttonSettings= view.findViewById(R.id.ButtonSettings);
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft = Objects.requireNonNull(getActivity()).
+                        getSupportFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                        R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                ft.replace(R.id.MainConstraintLayout, Settings_menu.newInstance()).commit();
+            }
+        });
+
         ArrayList<String> strList = new ArrayList<>();
         ArrayList<ArrayList<Float>> dataLists = new ArrayList<>();
 
@@ -74,6 +87,9 @@ public class SettingsFragment extends Fragment {
         lineView.setBottomTextList(strList);
         lineView.setColorArray(new int[]{Color.BLUE,Color.RED,Color.GRAY,Color.CYAN});
         lineView.setFloatDataList(dataLists);
+
+
+        //круговая диаграмма
 
         return view;
     }

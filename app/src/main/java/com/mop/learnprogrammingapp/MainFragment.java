@@ -141,7 +141,6 @@ public class MainFragment extends Fragment {
             }
         }
         else {
-            System.out.println("key_current_course");
             linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_current_course));
             cardViewCurrentCourse.setClickable(false);
             cardViewCurrentCourse.setFocusable(false);
