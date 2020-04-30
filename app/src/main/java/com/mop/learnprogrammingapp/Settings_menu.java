@@ -13,10 +13,9 @@ import android.widget.ImageButton;
 
 import java.util.Objects;
 
-
 public class Settings_menu extends Fragment {
 
-    public static Settings_menu newInstance() { return new Settings_menu(); }
+    static Settings_menu newInstance() { return new Settings_menu(); }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,6 @@ public class Settings_menu extends Fragment {
                 ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
             }
         });
-
 
         return view;
     }

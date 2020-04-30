@@ -88,10 +88,6 @@ public class SettingsFragment extends Fragment {
         lineView.setColorArray(new int[]{Color.BLUE,Color.RED,Color.GRAY,Color.CYAN});
         lineView.setFloatDataList(dataLists);
 
-
-        //круговая диаграмма
-
         return view;
     }
-
 }
