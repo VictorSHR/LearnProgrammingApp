@@ -40,7 +40,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'io.saeid:fab-loading:1.0.0'
-    implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.github.nirhart:parallaxscroll:1.0'
@@ -48,10 +47,9 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.firebase:firebase-database:19.3.0'
 }
-
 
 apply plugin: 'com.google.gms.google-services'
-repositories {
-    mavenCentral()
-}

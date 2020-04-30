@@ -1,6 +1,5 @@
 package com.mop.learnprogrammingapp;
 
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -26,7 +25,7 @@ public class MenuTrainingCourses extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_menu_training_courses, container, false);
+        View view = inflater.inflate(R.layout.fragment_menu_training_courses, container, false);
 
         ImageButton buttonBackToMainMenu = view.findViewById(R.id.buttonBackToMainMenu);
         buttonBackToMainMenu.setOnClickListener(new View.OnClickListener() {

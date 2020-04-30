@@ -10,10 +10,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
+
+import static com.mop.learnprogrammingapp.MainFragment.databaseFirebase;
+import static com.mop.learnprogrammingapp.MainFragment.db_key_current_course;
 
 public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewCourse.CardViewHolder> {
     private Context mContext;
@@ -35,7 +40,7 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
     }
 
     @Override
-    public void onBindViewHolder(final CardViewHolder cardViewHolder, final int position) {
+    public void onBindViewHolder(@NonNull final CardViewHolder cardViewHolder, final int position) {
         switch(cards.get(position).getCourse()) {
             case "PYTHON":
                 cardViewHolder.linLayoutCard.setBackground(cardViewHolder.itemView.getResources()
@@ -53,6 +58,18 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
 
         cardViewHolder.img.setImageDrawable(cards.get(position).getImg());
         cardViewHolder.lesson.setText(cards.get(position).getLesson());
+
+        cardViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db_key_current_course.setValue(cards.get(position).getCourse());
+
+                FragmentTransaction ft = ((MainActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                        R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
+            }
+        });
     }
 
     @Override
