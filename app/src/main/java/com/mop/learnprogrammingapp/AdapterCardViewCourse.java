@@ -13,11 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DatabaseReference;
-
 import java.util.List;
 
-import static com.mop.learnprogrammingapp.MainFragment.databaseFirebase;
 import static com.mop.learnprogrammingapp.MainFragment.db_key_current_course;
 
 public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewCourse.CardViewHolder> {
@@ -31,8 +28,9 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
 
     AdapterCardViewCourse(List<ModelCardViewCourse> cards){ this.cards = cards; }
 
+    @NonNull
     @Override
-    public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         View view = mInflater.inflate(R.layout.item_cardview, parent, false);
 
