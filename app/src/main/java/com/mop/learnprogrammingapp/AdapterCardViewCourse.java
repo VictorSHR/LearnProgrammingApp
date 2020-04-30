@@ -13,9 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.List;
 
-import static com.mop.learnprogrammingapp.MainFragment.db_key_current_course;
+import static com.mop.learnprogrammingapp.MainFragment.key_current_course;
 
 public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewCourse.CardViewHolder> {
     private Context mContext;
@@ -60,7 +66,8 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
         cardViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db_key_current_course.setValue(cards.get(position).getCourse());
+                key_current_course = cards.get(position).getCourse();
+                FirebaseDatabase.getInstance().getReference("CURRENT_COURSE").setValue(key_current_course);
 
                 FragmentTransaction ft = ((MainActivity) mContext).getSupportFragmentManager().beginTransaction();
                 ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,

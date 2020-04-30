@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -32,8 +31,12 @@ import java.util.Objects;
 public class MainFragment extends Fragment {
     private String[] LIST_COURSES = new String[]{"PYTHON", "CPLUS", "CSHARP"};
 
-    static FirebaseDatabase databaseFirebase;
-    static DatabaseReference db_key_current_course;
+    static String key_current_course;
+
+    private CardView cardViewCurrentCourse;
+    private LinearLayout linLayoutCurrentCourseCard;
+    private ImageView imgCurrentCourseCard;
+    private TextView textViewCurrentCourseCard;
 
     static MainFragment newInstance() {
         return new MainFragment();
@@ -50,7 +53,6 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        databaseFirebase = FirebaseDatabase.getInstance();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (currentUser != null)
@@ -58,20 +60,23 @@ public class MainFragment extends Fragment {
         else
             view.findViewById(R.id.textViewNameUser).setVisibility(View.INVISIBLE);
 
-        db_key_current_course = databaseFirebase.getReference("CURRENT_COURSE");
-        db_key_current_course.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                assert value != null;
-                updateCurrentLesson(view, value);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) { System.out.println(error); }
-        });
-
+        cardViewCurrentCourse = view.findViewById(R.id.cardViewCurrentCourse);
+        linLayoutCurrentCourseCard = view.findViewById(R.id.linLayoutCurrentCourseCard);
+        imgCurrentCourseCard = view.findViewById(R.id.imgCurrentCourseCard);
+        textViewCurrentCourseCard = view.findViewById(R.id.textViewCurrentCourseCard);
         ImageButton imgButtonSettings = view.findViewById(R.id.imgButtonSettings);
+
+        FirebaseDatabase.getInstance().getReference("CURRENT_COURSE")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        key_current_course = dataSnapshot.getValue(String.class);
+                        updateCurrentLesson();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) { }
+                });
 
         RecyclerView recyclerViewPythonLessons = view.findViewById(R.id.recyclerViewPythonLessons);
         RecyclerView recyclerViewCPlusLessons = view.findViewById(R.id.recyclerViewCPlusLessons);
@@ -117,18 +122,13 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    private void updateCurrentLesson(View view, String currentCourse) {
-        CardView cardViewCurrentCourse = view.findViewById(R.id.cardViewCurrentCourse);
-        LinearLayout linLayoutCurrentCourseCard = view.findViewById(R.id.linLayoutCurrentCourseCard);
-        ImageView imgCurrentCourseCard = view.findViewById(R.id.imgCurrentCourseCard);
-        TextView textViewCurrentCourseCard = view.findViewById(R.id.textViewCurrentCourseCard);
-
-        if(currentCourse != null) {
-            if(currentCourse.equals(LIST_COURSES[0]))
+    private void updateCurrentLesson() {
+        if(key_current_course != null) {
+            if(key_current_course.equals(LIST_COURSES[0]))
                 linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_python));
-            else if(currentCourse.equals(LIST_COURSES[1]))
+            else if(key_current_course.equals(LIST_COURSES[1]))
                 linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_cplus));
-            else if(currentCourse.equals(LIST_COURSES[2]))
+            else if(key_current_course.equals(LIST_COURSES[2]))
                 linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_csharp));
             else {
                 linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_current_course));
@@ -141,6 +141,7 @@ public class MainFragment extends Fragment {
             }
         }
         else {
+            System.out.println("key_current_course");
             linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_current_course));
             cardViewCurrentCourse.setClickable(false);
             cardViewCurrentCourse.setFocusable(false);
