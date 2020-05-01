@@ -1,6 +1,9 @@
 package com.mop.learnprogrammingapp;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +36,8 @@ public class MainFragment extends Fragment {
     private String[] LIST_COURSES = new String[]{"PYTHON", "CPLUS", "CSHARP"};
 
     static String key_current_course;
+    static String key_current_lesson;
+    static String uid_user;
 
     private CardView cardViewCurrentCourse;
     private LinearLayout linLayoutCurrentCourseCard;
@@ -53,10 +59,16 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_main, container, false);
 
+        if(!hasConnection(Objects.requireNonNull(getContext())))
+            Toast.makeText(getContext(),
+                    "Нет соединения с интернетом!", Toast.LENGTH_LONG).show();
+
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (currentUser != null)
+        if (currentUser != null) {
+            uid_user = currentUser.getUid();
             ((TextView) view.findViewById(R.id.textViewNameUser)).setText(currentUser.getDisplayName());
+        }
         else
             view.findViewById(R.id.textViewNameUser).setVisibility(View.INVISIBLE);
 
@@ -66,17 +78,18 @@ public class MainFragment extends Fragment {
         textViewCurrentCourseCard = view.findViewById(R.id.textViewCurrentCourseCard);
         ImageButton imgButtonSettings = view.findViewById(R.id.imgButtonSettings);
 
-        FirebaseDatabase.getInstance().getReference("CURRENT_COURSE")
+        FirebaseDatabase.getInstance().getReference(uid_user)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        key_current_course = dataSnapshot.getValue(String.class);
-                        updateCurrentLesson();
-                    }
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                key_current_course = dataSnapshot.child("CURRENT_COURSE").getValue(String.class);
+                key_current_lesson = dataSnapshot.child("CURRENT_LESSON").getValue(String.class);
+                updateCurrentLesson();
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) { }
-                });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
+        });
 
         RecyclerView recyclerViewPythonLessons = view.findViewById(R.id.recyclerViewPythonLessons);
         RecyclerView recyclerViewCPlusLessons = view.findViewById(R.id.recyclerViewCPlusLessons);
@@ -109,45 +122,49 @@ public class MainFragment extends Fragment {
         recyclerViewCPlusLessons.setAdapter(adapterCardViewCPlus);
         recyclerViewCSharpLessons.setAdapter(adapterCardViewCSharp);
 
-        imgButtonSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
-                        R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-                ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
-            }
+        imgButtonSettings.setOnClickListener(view1 -> {
+            FragmentTransaction ft = Objects.requireNonNull(getActivity())
+                    .getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+            ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
         });
 
         return view;
     }
 
+    private static boolean hasConnection(final Context context) {
+        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
+
+        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected()) return true;
+
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected()) return true;
+
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected()) return true;
+
+        return false;
+    }
+
+    @SuppressLint("SetTextI18n")
     private void updateCurrentLesson() {
         if(key_current_course != null) {
+            textViewCurrentCourseCard.setText("Lesson №" +
+                    String.valueOf(Integer.parseInt(key_current_lesson) + 1));
+            imgCurrentCourseCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_video_outline_100));
+            textViewCurrentCourseCard.setTextColor(getResources().getColor(R.color.bg_register));
+            cardViewCurrentCourse.setClickable(true);
+            cardViewCurrentCourse.setFocusable(true);
+
             if(key_current_course.equals(LIST_COURSES[0]))
                 linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_python));
             else if(key_current_course.equals(LIST_COURSES[1]))
                 linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_cplus));
             else if(key_current_course.equals(LIST_COURSES[2]))
                 linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_csharp));
-            else {
-                linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_current_course));
-                cardViewCurrentCourse.setClickable(false);
-                cardViewCurrentCourse.setFocusable(false);
-                imgCurrentCourseCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_education_100));
-                textViewCurrentCourseCard.setTextColor(getResources().getColor(R.color.btn_login_bg));
-                textViewCurrentCourseCard.setTextSize(22);
-                textViewCurrentCourseCard.setText("Начните проходить курсы уже прямо сейчас!");
-            }
-        }
-        else {
-            linLayoutCurrentCourseCard.setBackground(getResources().getDrawable(R.drawable.corner_radius_item_current_course));
-            cardViewCurrentCourse.setClickable(false);
-            cardViewCurrentCourse.setFocusable(false);
-            imgCurrentCourseCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_education_100));
-            textViewCurrentCourseCard.setTextColor(getResources().getColor(R.color.btn_login_bg));
-            textViewCurrentCourseCard.setTextSize(22);
-            textViewCurrentCourseCard.setText("Начните проходить курсы уже прямо сейчас!");
         }
     }
 }
