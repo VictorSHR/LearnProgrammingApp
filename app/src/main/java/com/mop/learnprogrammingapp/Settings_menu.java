@@ -32,20 +32,15 @@ public class Settings_menu extends Fragment {
         View view = inflater.inflate(R.layout.fragment_settings_menu, container, false);
 
         ImageButton buttonSettings = view.findViewById(R.id.buttonBackToMainMenu);
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction ft = Objects.requireNonNull(getActivity())
-                        .getSupportFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_left_to_right,
-                        R.anim.enter_right_to_left, R.anim.exit_right_to_left);
-                ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
-            }
+        buttonSettings.setOnClickListener(view1 -> {
+            FragmentTransaction ft = Objects.requireNonNull(getActivity())
+                    .getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_left_to_right,
+                    R.anim.enter_right_to_left, R.anim.exit_right_to_left);
+            ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
         });
 
-
-        RecyclerView rv = view.findViewById(R.id.rv);
+        RecyclerView rv = view.findViewById(R.id.recycleViewSettings);
         rv.setHasFixedSize(true);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
@@ -61,5 +56,4 @@ public class Settings_menu extends Fragment {
 
         return view;
     }
-
 }
