@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linLayoutMainAuth"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,9 +19,21 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
+        <TextView
+            android:id="@+id/textViewAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:text="AUTH"
+            android:textAlignment="center"
+            android:textColor="@color/btn_login_bg"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/editTextEmailAuth"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
@@ -32,7 +46,7 @@
 
         <EditText
             android:id="@+id/editTextPasswordAuth"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
@@ -48,9 +62,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@color/btn_login_bg"
+            android:padding="8dp"
             android:text="@string/btn_login"
-            android:textColor="@color/btn_login_bg" />
+            app:cornerRadius="20dp" />
 
         <TextView
             android:id="@+id/textViewLinkToRegisterScreen"
@@ -59,6 +73,8 @@
             android:layout_marginTop="8dp"
             android:background="@null"
             android:text="@string/btn_link_to_register"
+            android:focusable="true"
+            android:clickable="true"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/white"

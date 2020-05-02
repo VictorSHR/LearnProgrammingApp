@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -27,6 +29,8 @@ public class Registr extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private final int RC_SIGN_IN = 0;
 
+    private boolean FLAG_IS_REGISTRATION = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,9 @@ public class Registr extends AppCompatActivity {
         if(!hasConnection(getApplicationContext()))
             Toast.makeText(getApplicationContext(),
                     "Нет соединения с интернетом!", Toast.LENGTH_LONG).show();
+
+        EditText editTextLogin = findViewById(R.id.editTextEmailAuth);
+        EditText editTextPass = findViewById(R.id.editTextPasswordAuth);
 
         findViewById(R.id.btn_sign_in_google).setOnClickListener(view -> signIn());
 
@@ -46,6 +53,62 @@ public class Registr extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
+
+        findViewById(R.id.btnLogin).setOnClickListener(view -> {
+            if(FLAG_IS_REGISTRATION) {
+                mAuth.createUserWithEmailAndPassword(
+                        editTextLogin.getText().toString(), editTextPass.getText().toString())
+                        .addOnCompleteListener(this, task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Registration successfully!",
+                                        Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                            } else {
+                                if(editTextPass.getText().toString().length() < 6)
+                                    Toast.makeText(getApplicationContext(),
+                                            "Minimum of 6 characters for the password!",
+                                            Toast.LENGTH_SHORT).show();
+                                else
+                                    Toast.makeText(getApplicationContext(),
+                                            "Registration failed!",
+                                            Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+            else {
+                mAuth.signInWithEmailAndPassword(
+                        ((EditText) findViewById(R.id.editTextEmailAuth)).getText().toString(),
+                        ((EditText) findViewById(R.id.editTextPasswordAuth)).getText().toString())
+                        .addOnCompleteListener(this, task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Authentication successfully!",
+                                        Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                            } else {
+                                Toast.makeText(getApplicationContext(),
+                                        "Authentication failed!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+
+        });
+
+        findViewById(R.id.textViewLinkToRegisterScreen).setOnClickListener(view -> {
+            FLAG_IS_REGISTRATION = !FLAG_IS_REGISTRATION;
+
+            if(FLAG_IS_REGISTRATION) {
+                ((TextView) findViewById(R.id.textViewAuth)).setText("REGISTRATION");
+                ((TextView) view).setText(getString(R.string.btn_link_to_login));
+            }
+            else {
+                ((TextView) findViewById(R.id.textViewAuth)).setText("AUTH");
+                ((TextView) view).setText(getString(R.string.btn_link_to_register));
+            }
+        });
     }
 
     private static boolean hasConnection(final Context context) {
