@@ -40,19 +40,20 @@ public class Settings_menu extends Fragment {
             ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
         });
 
-        RecyclerView rv = view.findViewById(R.id.recycleViewSettings);
-        rv.setHasFixedSize(true);
+        RecyclerView recycleViewSettings = view.findViewById(R.id.recycleViewSettings);
+        recycleViewSettings.setHasFixedSize(true);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        rv.setLayoutManager(llm);
+        recycleViewSettings.setLayoutManager(llm);
 
-        List<settings_cards> persons = new ArrayList<>();
-        persons.add(new settings_cards("Напоминание", getResources().getDrawable(R.drawable.ic_favorite_35)));
-        persons.add(new settings_cards ("Звук", getResources().getDrawable(R.drawable.ic_favorite_35)));
-        persons.add(new settings_cards("У меня проблема", getResources().getDrawable(R.drawable.ic_favorite_35)));
-        persons.add(new settings_cards("Обгулить прогресс", getResources().getDrawable(R.drawable.ic_favorite_35)));
-        persons.add(new settings_cards("Регистрация/Авторизация",getResources().getDrawable(R.drawable.ic_favorite_35)));
-       // persons.add(new Settings_cards("", R.raw.star_slider));
+        List<settings_cards> cardsSettings = new ArrayList<>();
+        cardsSettings.add(new settings_cards("Напоминание", getResources().getDrawable(R.drawable.ic_notifications_28)));
+        cardsSettings.add(new settings_cards ("Звук", getResources().getDrawable(R.drawable.ic_volume_outline_28)));
+        cardsSettings.add(new settings_cards("У меня проблема", getResources().getDrawable(R.drawable.ic_bug_outline_28)));
+        cardsSettings.add(new settings_cards("Сбросить прогресс", getResources().getDrawable(R.drawable.ic_clear_data_outline_28)));
+        cardsSettings.add(new settings_cards("Регистрация/Авторизация",getResources().getDrawable(R.drawable.ic_user_outline_28)));
+
+        recycleViewSettings.setAdapter(new AdapterCardViewSettings(getContext(), cardsSettings));
 
         return view;
     }

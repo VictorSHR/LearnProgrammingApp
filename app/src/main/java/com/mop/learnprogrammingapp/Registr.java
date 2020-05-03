@@ -2,11 +2,16 @@ package com.mop.learnprogrammingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +26,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import java.util.Objects;
 
@@ -31,17 +37,25 @@ public class Registr extends AppCompatActivity {
 
     private boolean FLAG_IS_REGISTRATION = false;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_registr);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if(!hasConnection(getApplicationContext()))
             Toast.makeText(getApplicationContext(),
                     "Нет соединения с интернетом!", Toast.LENGTH_LONG).show();
 
+        EditText editTextNameUserAuth = findViewById(R.id.editTextNameUserAuth);
         EditText editTextLogin = findViewById(R.id.editTextEmailAuth);
         EditText editTextPass = findViewById(R.id.editTextPasswordAuth);
+
+        editTextNameUserAuth.setVisibility(View.GONE);
 
         findViewById(R.id.btn_sign_in_google).setOnClickListener(view -> signIn());
 
@@ -55,56 +69,71 @@ public class Registr extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.btnLogin).setOnClickListener(view -> {
-            if(FLAG_IS_REGISTRATION) {
-                mAuth.createUserWithEmailAndPassword(
-                        editTextLogin.getText().toString(), editTextPass.getText().toString())
-                        .addOnCompleteListener(this, task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(),
-                                        "Registration successfully!",
-                                        Toast.LENGTH_SHORT).show();
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                updateUI(user);
-                            } else {
-                                if(editTextPass.getText().toString().length() < 6)
-                                    Toast.makeText(getApplicationContext(),
-                                            "Minimum of 6 characters for the password!",
-                                            Toast.LENGTH_SHORT).show();
-                                else
-                                    Toast.makeText(getApplicationContext(),
-                                            "Registration failed!",
-                                            Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
+            if(editTextLogin.getText().toString().length() == 0 ||
+                    editTextPass.getText().toString().length() == 0)
+                Toast.makeText(getApplicationContext(), "Please, enter all data!",
+                        Toast.LENGTH_SHORT).show();
             else {
-                mAuth.signInWithEmailAndPassword(
-                        ((EditText) findViewById(R.id.editTextEmailAuth)).getText().toString(),
-                        ((EditText) findViewById(R.id.editTextPasswordAuth)).getText().toString())
-                        .addOnCompleteListener(this, task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(),
-                                        "Authentication successfully!",
-                                        Toast.LENGTH_SHORT).show();
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                updateUI(user);
-                            } else {
-                                Toast.makeText(getApplicationContext(),
-                                        "Authentication failed!", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
+                if(FLAG_IS_REGISTRATION) {
+                    mAuth.createUserWithEmailAndPassword(
+                            editTextLogin.getText().toString(), editTextPass.getText().toString())
+                            .addOnCompleteListener(this, task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(),
+                                            "Registration successfully!",
+                                            Toast.LENGTH_SHORT).show();
+                                    FirebaseUser user = mAuth.getCurrentUser();
 
+                                    UserProfileChangeRequest profileUpdates =
+                                            new UserProfileChangeRequest.Builder()
+                                                    .setDisplayName(editTextNameUserAuth.getText().toString())
+                                                    .build();
+
+                                    assert user != null;
+                                    user.updateProfile(profileUpdates).addOnCompleteListener(task1 ->{});
+
+                                    updateUI(user);
+                                } else {
+                                    if(editTextPass.getText().toString().length() < 6)
+                                        Toast.makeText(getApplicationContext(),
+                                                "Minimum of 6 characters for the password!",
+                                                Toast.LENGTH_SHORT).show();
+                                    else
+                                        Toast.makeText(getApplicationContext(),
+                                                "Registration failed!",
+                                                Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+                else {
+                    mAuth.signInWithEmailAndPassword(
+                            editTextLogin.getText().toString(), editTextPass.getText().toString())
+                            .addOnCompleteListener(this, task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(),
+                                            "Authentication successfully!",
+                                            Toast.LENGTH_SHORT).show();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    updateUI(user);
+                                } else {
+                                    Toast.makeText(getApplicationContext(),
+                                            "Authentication failed!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+            }
         });
 
         findViewById(R.id.textViewLinkToRegisterScreen).setOnClickListener(view -> {
             FLAG_IS_REGISTRATION = !FLAG_IS_REGISTRATION;
 
             if(FLAG_IS_REGISTRATION) {
+                editTextNameUserAuth.setVisibility(View.VISIBLE);
                 ((TextView) findViewById(R.id.textViewAuth)).setText("REGISTRATION");
                 ((TextView) view).setText(getString(R.string.btn_link_to_login));
             }
             else {
+                editTextNameUserAuth.setVisibility(View.GONE);
                 ((TextView) findViewById(R.id.textViewAuth)).setText("AUTH");
                 ((TextView) view).setText(getString(R.string.btn_link_to_register));
             }

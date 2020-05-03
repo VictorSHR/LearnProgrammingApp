@@ -41,12 +41,14 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
         return cards.size();
     }
 
-    public static class SettingsViewHolder extends RecyclerView.ViewHolder {
+    static class SettingsViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         ImageView ImgSettings;
         TextView TextSettings;
+
         SettingsViewHolder(View itemView) {
             super(itemView);
+
             cv = itemView.findViewById(R.id.cv);
             ImgSettings = itemView.findViewById(R.id.img_settings);
             TextSettings = itemView.findViewById(R.id.text_settings);
