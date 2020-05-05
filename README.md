@@ -1,1 +1,1 @@
-# LearnProgrammingApp
+LearnProgrammingApp - Android-приложение
