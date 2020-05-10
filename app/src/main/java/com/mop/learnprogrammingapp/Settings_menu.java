@@ -20,9 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Settings_menu extends Fragment {
+public class Settings_menu extends Fragment implements View.OnTouchListener {
 
     float x;
+    LottieAnimationView star_animation;
     static Settings_menu newInstance() { return new Settings_menu(); }
 
     @Override
@@ -60,9 +61,10 @@ public class Settings_menu extends Fragment {
 
         recycleViewSettings.setAdapter(new AdapterCardViewSettings(getContext(), cardsSettings));
 
-        /*LottieAnimationView star_animation = view.findViewById(R.id.animation_star);
-        star_animation.setOnTouchListener(this);
-        star_animation.setOnClickListener(new View.OnClickListener() {
+        star_animation = view.findViewById(R.id.animation_star);
+        star_animation.setOnTouchListener((View.OnTouchListener) this);
+
+       /* star_animation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View view) {
                 star_animation.setProgress(x);
@@ -75,9 +77,13 @@ public class Settings_menu extends Fragment {
     }
 
 
-   /* @Override
+    @Override
     public boolean onTouch(View v, MotionEvent event) {
         x = event.getX();
+        if(x>137 && x<512)
+            star_animation.setProgress((x-100)/750);
+        if(x>512 && x<600)
+            star_animation.setProgress((x-100)/750);
         return true;
-    }*/
+    }
 }
