@@ -135,15 +135,6 @@
                         app:layout_constraintStart_toEndOf="@+id/imageView2"
                         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-                    <lecho.lib.hellocharts.view.LineChartView
-                        android:id="@+id/chart"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginEnd="5dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -187,48 +178,6 @@
                         android:src="@drawable/ic_game_outline_28"
                         app:layout_constraintEnd_toStartOf="@+id/textView4"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <HorizontalScrollView
-                        android:layout_width="377dp"
-                        android:layout_height="123dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal" >
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_gravity="center"
-                                />
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_gravity="center"
-                                />
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_gravity="center"
-                                />
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_gravity="center"
-                                />
-                        </LinearLayout>
-                    </HorizontalScrollView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -298,21 +247,7 @@
                                 android:layout_marginTop="5dp" />
                         </LinearLayout>
                     </HorizontalScrollView>
-
-                    <com.db.williamchart.view.LineChartView
-                        android:id="@+id/donutChart"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@android:color/transparent"
-                        android:layout_marginTop="15dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Horizontal_view" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
 
             <com.airbnb.lottie.LottieAnimationView
