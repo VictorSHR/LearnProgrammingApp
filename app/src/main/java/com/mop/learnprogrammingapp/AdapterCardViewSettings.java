@@ -1,5 +1,6 @@
 package com.mop.learnprogrammingapp;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,13 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
     public void onBindViewHolder(@NonNull SettingsViewHolder holder, int position) {
         holder.ImgSettings.setImageDrawable(cards.get(position).getImg());
         holder.TextSettings.setText(cards.get(position).getText());
+
+        holder.cv.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
