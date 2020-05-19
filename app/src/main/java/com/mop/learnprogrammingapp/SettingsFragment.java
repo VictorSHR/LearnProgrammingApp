@@ -34,29 +34,21 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
         ImageButton buttonBackToMainMenu = view.findViewById(R.id.buttonBackToMainMenu);
-        buttonBackToMainMenu.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction ft = Objects.requireNonNull(getActivity())
-                        .getSupportFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_left_to_right,
-                        R.anim.enter_right_to_left, R.anim.exit_right_to_left);
-                ft.replace(R.id.MainConstraintLayout, MainFragment.newInstance()).commit();
-            }
+        buttonBackToMainMenu.setOnClickListener(view12 -> {
+            FragmentTransaction ft = Objects.requireNonNull(getActivity())
+                    .getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_left_to_right,
+                    R.anim.enter_right_to_left, R.anim.exit_right_to_left);
+            ft.replace(R.id.MainConstraintLayout, MainFragment.newInstance()).commit();
         });
 
         ImageButton buttonSettings= view.findViewById(R.id.ButtonSettings);
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction ft = Objects.requireNonNull(getActivity()).
-                        getSupportFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
-                        R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-                ft.replace(R.id.MainConstraintLayout, Settings_menu.newInstance()).commit();
-            }
+        buttonSettings.setOnClickListener(view1 -> {
+            FragmentTransaction ft = Objects.requireNonNull(getActivity()).
+                    getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+            ft.replace(R.id.MainConstraintLayout, Settings_menu.newInstance()).commit();
         });
 
         ArrayList<String> strList = new ArrayList<>();

@@ -30,9 +30,10 @@
                     android:id="@+id/buttonBackToMainMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:padding="8dp"
                     android:src="@drawable/ic_back2"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ContentDescription" />
@@ -41,11 +42,12 @@
                     android:id="@+id/ButtonSettings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:padding="8dp"
                     android:src="@drawable/ic_settings_outline_28"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     tools:ignore="ContentDescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
