@@ -71,7 +71,7 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
             FragmentTransaction ft = ((MainActivity) mContext).getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
                     R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-            ft.replace(R.id.MainConstraintLayout, SettingsFragment.newInstance()).commit();
+            ft.replace(R.id.MainConstraintLayout, FragmentCurrentLesson.newInstance()).commit();
         });
     }
 

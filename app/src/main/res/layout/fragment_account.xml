@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +34,8 @@
                     android:padding="8dp"
                     android:src="@drawable/ic_back2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
 
                 <ImageButton
                     android:id="@+id/ButtonSettings"
@@ -44,7 +45,8 @@
                     android:padding="8dp"
                     android:src="@drawable/ic_settings_outline_28"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,7 +87,8 @@
                         android:layout_marginTop="44dp"
                         android:src="@drawable/ic_user_circle_35"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/textView2"
@@ -205,7 +208,8 @@
                         android:layout_marginTop="5dp"
                         android:src="@drawable/ic_poll_square_outline_28"
                         app:layout_constraintEnd_toStartOf="@+id/textVie"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/textVie"
