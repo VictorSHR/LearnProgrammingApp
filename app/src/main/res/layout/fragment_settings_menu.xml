@@ -44,4 +44,15 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         android:id="@+id/recycleViewSettings" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_star"
+        android:layout_width="720px"
+        android:layout_height="211dp"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/stars" />
+
+
 </LinearLayout>

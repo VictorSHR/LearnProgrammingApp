@@ -9,16 +9,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Settings_menu extends Fragment {
+public class Settings_menu extends Fragment implements View.OnTouchListener {
 
+    float x;
+    LottieAnimationView star_animation;
     static Settings_menu newInstance() { return new Settings_menu(); }
 
     @Override
@@ -51,10 +56,34 @@ public class Settings_menu extends Fragment {
         cardsSettings.add(new settings_cards ("Звук", getResources().getDrawable(R.drawable.ic_volume_outline_28)));
         cardsSettings.add(new settings_cards("У меня проблема", getResources().getDrawable(R.drawable.ic_bug_outline_28)));
         cardsSettings.add(new settings_cards("Сбросить прогресс", getResources().getDrawable(R.drawable.ic_clear_data_outline_28)));
-        cardsSettings.add(new settings_cards("Регистрация/Авторизация",getResources().getDrawable(R.drawable.ic_user_outline_28)));
+        cardsSettings.add(new settings_cards("Регистрация/Авторизация",getResources().getDrawable(R.drawable.ic_mail)));
+        cardsSettings.add(new settings_cards("О Разработчиках",getResources().getDrawable(R.drawable.ic_share_external_outline_28)));
 
         recycleViewSettings.setAdapter(new AdapterCardViewSettings(getContext(), cardsSettings));
 
+        star_animation = view.findViewById(R.id.animation_star);
+        star_animation.setOnTouchListener((View.OnTouchListener) this);
+
+       /* star_animation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View view) {
+                star_animation.setProgress(x);
+                star_animation.playAnimation();
+            }
+        });*/
+
+
         return view;
+    }
+
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        x = event.getX();
+        if(x>137 && x<512)
+            star_animation.setProgress((x-100)/750);
+        if(x>512 && x<600)
+            star_animation.setProgress((x-100)/750);
+        return true;
     }
 }

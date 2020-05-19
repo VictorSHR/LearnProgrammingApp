@@ -1,5 +1,6 @@
 package com.mop.learnprogrammingapp;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,13 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
     public void onBindViewHolder(@NonNull SettingsViewHolder holder, int position) {
         holder.ImgSettings.setImageDrawable(cards.get(position).getImg());
         holder.TextSettings.setText(cards.get(position).getText());
+
+        holder.cv.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -41,7 +49,7 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
         return cards.size();
     }
 
-    static class SettingsViewHolder extends RecyclerView.ViewHolder {
+    public class SettingsViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener*/  {
         CardView cv;
         ImageView ImgSettings;
         TextView TextSettings;
@@ -53,5 +61,31 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
             ImgSettings = itemView.findViewById(R.id.img_settings);
             TextSettings = itemView.findViewById(R.id.text_settings);
         }
+
+        /*@Override
+        public void onClick(View v) {
+
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                switch (v.getId()) {
+                    case R.id.card:
+                        itemClick(position);
+                        break;
+                    case R.id.button:
+                        buttonClick(position);
+                }
+            }
+        }
+
+        private void itemClick(int position){
+
+            //action on item click
+        }
+
+        private void buttonClick (int position){
+
+            //action on button click
+        }*/
+
     }
 }

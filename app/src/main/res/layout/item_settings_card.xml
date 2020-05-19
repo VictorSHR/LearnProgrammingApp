@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Settings"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="italic" />
 
     </LinearLayout>
