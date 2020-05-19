@@ -118,7 +118,8 @@
                         android:id="@+id/imgCurrentCourseCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_education_100" />
+                        android:src="@drawable/ic_education_100"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/textViewCurrentCourseCard"
