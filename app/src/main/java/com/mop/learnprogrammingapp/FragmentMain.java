@@ -99,18 +99,18 @@ public class FragmentMain extends Fragment {
         recyclerViewCPlusLessons.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false));
         recyclerViewCSharpLessons.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false));
 
-        ArrayList<ModelCardViewCourse> PythonList = new ArrayList<>();
-        ArrayList<ModelCardViewCourse> CPlusList = new ArrayList<>();
-        ArrayList<ModelCardViewCourse> CSharpList = new ArrayList<>();
+        ArrayList<lessons_cards> PythonList = new ArrayList<>();
+        ArrayList<lessons_cards> CPlusList = new ArrayList<>();
+        ArrayList<lessons_cards> CSharpList = new ArrayList<>();
 
         for(int i = 1; i < 11; i++) {
-            PythonList.add(new ModelCardViewCourse(getResources().getDrawable(
+            PythonList.add(new lessons_cards(getResources().getDrawable(
                     R.drawable.ic_video_outline_28), "Lesson " + i, LIST_COURSES[0]));
 
-            CPlusList.add(new ModelCardViewCourse(getResources().getDrawable(
+            CPlusList.add(new lessons_cards(getResources().getDrawable(
                     R.drawable.ic_video_outline_28), "Lesson " + i, LIST_COURSES[1]));
 
-            CSharpList.add(new ModelCardViewCourse(getResources().getDrawable(
+            CSharpList.add(new lessons_cards(getResources().getDrawable(
                     R.drawable.ic_video_outline_28), "Lesson " + i, LIST_COURSES[2]));
         }
 

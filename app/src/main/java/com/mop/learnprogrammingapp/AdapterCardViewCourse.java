@@ -24,9 +24,9 @@ import static com.mop.learnprogrammingapp.FragmentMain.uid_user;
 
 public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewCourse.CardViewHolder> {
     private Context mContext;
-    private List<ModelCardViewCourse> cards;
+    private List<lessons_cards> cards;
 
-    AdapterCardViewCourse(Context mContext, List<ModelCardViewCourse> cards) {
+    AdapterCardViewCourse(Context mContext, List<lessons_cards> cards) {
         this.mContext = mContext;
         this.cards = cards;
     }
