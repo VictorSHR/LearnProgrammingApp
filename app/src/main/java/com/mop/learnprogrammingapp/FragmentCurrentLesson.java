@@ -26,7 +26,7 @@ public class FragmentCurrentLesson extends Fragment {
                     .getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_left_to_right,
                     R.anim.enter_right_to_left, R.anim.exit_right_to_left);
-            ft.replace(R.id.MainConstraintLayout, MainFragment.newInstance()).commit();
+            ft.replace(R.id.MainConstraintLayout, FragmentMain.newInstance()).commit();
         });
 
         return view;

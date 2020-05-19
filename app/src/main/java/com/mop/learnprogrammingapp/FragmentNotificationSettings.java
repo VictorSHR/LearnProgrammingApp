@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 
 
-public class Fragment_notification_settings extends Fragment {
+public class FragmentNotificationSettings extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -11,12 +11,11 @@ class settings_cards {
             this.img = idImg;
         }
 
-    public String getText() {
+    String getText() {
         return text;
     }
 
-    public Drawable getImg() {
+    Drawable getImg() {
         return img;
     }
-
 }

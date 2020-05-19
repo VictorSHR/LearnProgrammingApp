@@ -15,14 +15,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,RtlEnabled,UnusedAttribute">
 
-        <activity android:name=".MenuTrainingCourses" />
-        <activity android:name=".Registr">
+        <activity android:name=".FragmentMenuTrainingCourses" />
+        <activity android:name=".ActivityRegistr">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ActivityMain" />
     </application>
 
 </manifest>

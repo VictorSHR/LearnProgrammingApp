@@ -18,9 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-import static com.mop.learnprogrammingapp.MainFragment.key_current_course;
-import static com.mop.learnprogrammingapp.MainFragment.key_current_lesson;
-import static com.mop.learnprogrammingapp.MainFragment.uid_user;
+import static com.mop.learnprogrammingapp.FragmentMain.key_current_course;
+import static com.mop.learnprogrammingapp.FragmentMain.key_current_lesson;
+import static com.mop.learnprogrammingapp.FragmentMain.uid_user;
 
 public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewCourse.CardViewHolder> {
     private Context mContext;
@@ -68,7 +68,7 @@ public class AdapterCardViewCourse extends RecyclerView.Adapter<AdapterCardViewC
             tmpDB.child("CURRENT_COURSE").setValue(key_current_course);
             tmpDB.child("CURRENT_LESSON").setValue(key_current_lesson);
 
-            FragmentTransaction ft = ((MainActivity) mContext).getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft = ((ActivityMain) mContext).getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
                     R.anim.enter_left_to_right, R.anim.exit_left_to_right);
             ft.replace(R.id.MainConstraintLayout, FragmentCurrentLesson.newInstance()).commit();
