@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+<<<<<<< Updated upstream
 import java.util.Arrays;
+=======
+import java.util.List;
+>>>>>>> Stashed changes
 import java.util.Objects;
 
 import static com.mop.learnprogrammingapp.FragmentMain.key_current_course;
@@ -36,6 +42,7 @@ public class FragmentCurrentLesson extends Fragment {
             ft.replace(R.id.MainConstraintLayout, FragmentMain.newInstance()).commit();
         });
 
+<<<<<<< Updated upstream
         TextView textViewCurrentLesson = view.findViewById(R.id.textViewCurrentLesson);
         Button butNextCurrentLesson = view.findViewById(R.id.butNextCurrentLesson);
 
@@ -78,6 +85,24 @@ public class FragmentCurrentLesson extends Fragment {
                 textViewCurrentLesson.setText(finalTmp_arrayList_lesson[counter_current_lesson[0]]);
             }
         });
+=======
+        RecyclerView recycleViewSettings = view.findViewById(R.id.RecyclerViewGame);
+        recycleViewSettings.setHasFixedSize(true);
+
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        recycleViewSettings.setLayoutManager(llm);
+
+        List<settings_cards> cardsSettings = new ArrayList<>();
+        cardsSettings.add(new settings_cards("Напоминание", getResources().getDrawable(R.drawable.ic_notifications_28)));
+        cardsSettings.add(new settings_cards ("Звук", getResources().getDrawable(R.drawable.ic_volume_outline_28)));
+        cardsSettings.add(new settings_cards("У меня проблема", getResources().getDrawable(R.drawable.ic_bug_outline_28)));
+        cardsSettings.add(new settings_cards("Сбросить прогресс", getResources().getDrawable(R.drawable.ic_clear_data_outline_28)));
+        cardsSettings.add(new settings_cards("Регистрация/Авторизация",getResources().getDrawable(R.drawable.ic_mail)));
+        cardsSettings.add(new settings_cards("О Разработчиках",getResources().getDrawable(R.drawable.ic_share_external_outline_28)));
+
+        recycleViewSettings.setAdapter(new AdapterCardViewSettings(getContext(), cardsSettings));
+
+>>>>>>> Stashed changes
 
         return view;
     }

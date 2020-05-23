@@ -5,11 +5,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
 class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettings.SettingsViewHolder>{
     private Context mContext;
     private List<settings_cards> cards;
+    Dialog dialog;
+
 
     AdapterCardViewSettings(Context mContext, List<settings_cards> cards){
         this.mContext = mContext;
@@ -36,12 +40,36 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
         holder.ImgSettings.setImageDrawable(cards.get(position).getImg());
         holder.TextSettings.setText(cards.get(position).getText());
 
-        holder.cv.setOnClickListener (new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        dialog = new Dialog(holder.cv.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+
+        holder.itemView.setOnClickListener(view -> {
+            switch(cards.get(position).getText()) {
+                case "Напоминание":
+                    dialog.setContentView(R.layout.fragment_notification_settings);
+                    dialog.findViewById(R.id.OK_button).setOnClickListener(v -> dialog.dismiss());
+                    dialog.findViewById(R.id.Cancle_button).setOnClickListener(v -> dialog.dismiss());
+                    dialog.show();
+                    break;
+                case "Звук":
+
+                    break;
+                case "У меня проблема":
+
+                    break;
+                case "Сбросить прогресс":
+
+                    break;
+                case "Регистрация/Авторизация":
+
+                    break;
+                case "О Разработчиках":
+
+                    break;
             }
         });
+
     }
 
     @Override
@@ -61,31 +89,5 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
             ImgSettings = itemView.findViewById(R.id.img_settings);
             TextSettings = itemView.findViewById(R.id.text_settings);
         }
-
-        /*@Override
-        public void onClick(View v) {
-
-            int position = getAdapterPosition();
-            if (position != RecyclerView.NO_POSITION) {
-                switch (v.getId()) {
-                    case R.id.card:
-                        itemClick(position);
-                        break;
-                    case R.id.button:
-                        buttonClick(position);
-                }
-            }
-        }
-
-        private void itemClick(int position){
-
-            //action on item click
-        }
-
-        private void buttonClick (int position){
-
-            //action on button click
-        }*/
-
     }
 }
