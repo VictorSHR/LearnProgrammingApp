@@ -85,24 +85,6 @@ public class FragmentCurrentLesson extends Fragment {
                 textViewCurrentLesson.setText(finalTmp_arrayList_lesson[counter_current_lesson[0]]);
             }
         });
-=======
-        RecyclerView recycleViewSettings = view.findViewById(R.id.RecyclerViewGame);
-        recycleViewSettings.setHasFixedSize(true);
-
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        recycleViewSettings.setLayoutManager(llm);
-
-        List<settings_cards> cardsSettings = new ArrayList<>();
-        cardsSettings.add(new settings_cards("Напоминание", getResources().getDrawable(R.drawable.ic_notifications_28)));
-        cardsSettings.add(new settings_cards ("Звук", getResources().getDrawable(R.drawable.ic_volume_outline_28)));
-        cardsSettings.add(new settings_cards("У меня проблема", getResources().getDrawable(R.drawable.ic_bug_outline_28)));
-        cardsSettings.add(new settings_cards("Сбросить прогресс", getResources().getDrawable(R.drawable.ic_clear_data_outline_28)));
-        cardsSettings.add(new settings_cards("Регистрация/Авторизация",getResources().getDrawable(R.drawable.ic_mail)));
-        cardsSettings.add(new settings_cards("О Разработчиках",getResources().getDrawable(R.drawable.ic_share_external_outline_28)));
-
-        recycleViewSettings.setAdapter(new AdapterCardViewSettings(getContext(), cardsSettings));
-
->>>>>>> Stashed changes
 
         return view;
     }
