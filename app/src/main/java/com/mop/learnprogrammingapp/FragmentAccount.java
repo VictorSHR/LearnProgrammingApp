@@ -41,7 +41,7 @@ public class FragmentAccount extends Fragment {
             ft.replace(R.id.MainConstraintLayout, FragmentMain.newInstance()).commit();
         });
 
-        ImageButton buttonSettings= view.findViewById(R.id.ButtonSettings);
+        ImageButton buttonSettings = view.findViewById(R.id.ButtonSettings);
         buttonSettings.setOnClickListener(view1 -> {
             FragmentTransaction ft = Objects.requireNonNull(getActivity()).
                     getSupportFragmentManager().beginTransaction();
