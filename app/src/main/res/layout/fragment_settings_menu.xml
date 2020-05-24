@@ -45,6 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_settings_card"
         android:id="@+id/recycleViewSettings" />
 
     <com.airbnb.lottie.LottieAnimationView

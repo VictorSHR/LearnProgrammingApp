@@ -33,10 +33,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class FragmentMain extends Fragment {
-    private String[] LIST_COURSES = new String[]{"PYTHON", "CPLUS", "CSHARP"};
+    static String[] LIST_COURSES = new String[]{"PYTHON", "CPLUS", "CSHARP"};
 
     static String key_current_course;
     static String key_current_lesson;
+    static int key_num_current_lesson;
     static String uid_user;
 
     private CardView cardViewCurrentCourse;
@@ -114,9 +115,9 @@ public class FragmentMain extends Fragment {
                     R.drawable.ic_video_outline_28), "Lesson " + i, LIST_COURSES[2]));
         }
 
-        AdapterCardViewCourse adapterCardViewPython = new AdapterCardViewCourse(getContext(), PythonList);
-        AdapterCardViewCourse adapterCardViewCPlus = new AdapterCardViewCourse(getContext(), CPlusList);
-        AdapterCardViewCourse adapterCardViewCSharp = new AdapterCardViewCourse(getContext(), CSharpList);
+        AdapterCardViewLesson adapterCardViewPython = new AdapterCardViewLesson(getContext(), PythonList);
+        AdapterCardViewLesson adapterCardViewCPlus = new AdapterCardViewLesson(getContext(), CPlusList);
+        AdapterCardViewLesson adapterCardViewCSharp = new AdapterCardViewLesson(getContext(), CSharpList);
 
         recyclerViewPythonLessons.setAdapter(adapterCardViewPython);
         recyclerViewCPlusLessons.setAdapter(adapterCardViewCPlus);
