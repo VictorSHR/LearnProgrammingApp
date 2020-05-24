@@ -59,7 +59,10 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
 
                     break;
                 case "Сбросить прогресс":
-
+                    dialog.setContentView(R.layout.previewdialog);
+                    dialog.findViewById(R.id.button3).setOnClickListener(v -> dialog.dismiss());
+                    dialog.findViewById(R.id.button4).setOnClickListener(v -> dialog.dismiss());
+                    dialog.show();
                     break;
                 case "Регистрация/Авторизация":
 
