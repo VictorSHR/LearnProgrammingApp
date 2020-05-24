@@ -15,11 +15,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-<<<<<<< Updated upstream
 import java.util.Arrays;
-=======
 import java.util.List;
->>>>>>> Stashed changes
 import java.util.Objects;
 
 import static com.mop.learnprogrammingapp.FragmentMain.key_current_course;
@@ -42,7 +39,6 @@ public class FragmentCurrentLesson extends Fragment {
             ft.replace(R.id.MainConstraintLayout, FragmentMain.newInstance()).commit();
         });
 
-<<<<<<< Updated upstream
         TextView textViewCurrentLesson = view.findViewById(R.id.textViewCurrentLesson);
         Button butNextCurrentLesson = view.findViewById(R.id.butNextCurrentLesson);
 
