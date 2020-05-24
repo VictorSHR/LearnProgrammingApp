@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,8 +55,30 @@ public class FragmentCurrentLesson extends Fragment {
 
                 break;
             case "CPLUS":
+                switch(key_num_current_lesson) {
+                    case 0:
+                        tmp_arrayList_lesson = getResources().getStringArray(R.array.CiPlusPlus_0);
+                        break;
+                    case 1:
+                        tmp_arrayList_lesson = getResources().getStringArray(R.array.CiPlusPlus_1);
+                        break;
+                    case 2:
+                        tmp_arrayList_lesson = getResources().getStringArray(R.array.CiPlusPlus_2);
+                        break;
+                }
                 break;
             case "CSHARP":
+                switch(key_num_current_lesson) {
+                    case 0:
+                        tmp_arrayList_lesson = getResources().getStringArray(R.array.CSHARP_0);
+                        break;
+                    case 1:
+                        tmp_arrayList_lesson = getResources().getStringArray(R.array.CSHARP_1);
+                        break;
+                    case 2:
+                        tmp_arrayList_lesson = getResources().getStringArray(R.array.CSHARP_2);
+                        break;
+                }
                 break;
         }
 
