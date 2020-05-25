@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -59,7 +58,7 @@ class AdapterCardViewSettings extends RecyclerView.Adapter<AdapterCardViewSettin
 
                     break;
                 case "Сбросить прогресс":
-                    dialog.setContentView(R.layout.previewdialog);
+                    dialog.setContentView(R.layout.dialog_reset_profile);
                     dialog.findViewById(R.id.button3).setOnClickListener(v -> dialog.dismiss());
                     dialog.findViewById(R.id.button4).setOnClickListener(v -> dialog.dismiss());
                     dialog.show();

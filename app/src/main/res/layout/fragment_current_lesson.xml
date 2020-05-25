@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/constraintLayoutCurrentLesson"
     tools:context=".FragmentCurrentLesson">
 
     <LinearLayout
@@ -28,35 +29,68 @@
             tools:ignore="ContentDescription" />
 
         <ProgressBar
+            android:id="@+id/progressBarCurrentLesson"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="16dp"
+            android:progressDrawable="@drawable/custom_progress_bar"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewCurrentLesson"
+    <ScrollView
+        android:id="@+id/scrollViewCurrentLesson"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="32dp"
-        android:text="Зачем изучать Python? Где используется?\n\n\nНа сегодняшний день Python входит в ТОП-3 востребованных языков программирования.\n\n\nPython используется для разработки веб-сайтов, игровых платформ, систем управления искусственным интеллектом. И даже используется в некоторых космических программах."
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/butNextCurrentLesson"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.49">
+
+        <TextView
+            android:id="@+id/textViewCurrentLesson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/butPrevCurrentLesson"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:drawableLeft="@drawable/ic_arrow_left_outline_28"
+        android:text="Назад"
+        android:textColor="#2E3237"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/butNextCurrentLesson"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="RtlHardcoded" />
 
     <Button
         android:id="@+id/butNextCurrentLesson"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:text="Далее"
-        app:icon="@drawable/ic_checks_outline_28"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:drawableRight="@drawable/ic_arrow_right_outline_28"
+        android:text="Далее"
+        android:textColor="#2E3237"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/butPrevCurrentLesson"
+        tools:ignore="RtlHardcoded" />
 </androidx.constraintlayout.widget.ConstraintLayout>

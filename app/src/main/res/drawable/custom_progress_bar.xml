@@ -1,0 +1,22 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/secondaryProgress">
+        <shape>
+            <corners android:radius="8dp"/>
+            <solid android:color="#25222222"/>
+        </shape>
+    </item>
+
+    <item android:id="@android:id/progress"
+        android:top="3dp"
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp">
+
+        <scale android:scaleWidth="100%">
+            <shape>
+                <corners android:radius="8dp"/>
+                <solid android:color="@color/color_menu_2"/>
+            </shape>
+        </scale>
+    </item>
+</layer-list>
