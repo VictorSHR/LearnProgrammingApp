@@ -13,15 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
+import static com.mop.learnprogrammingapp.FragmentMain.APP_PREFERENCES;
 import static com.mop.learnprogrammingapp.FragmentMain.key_current_course;
 import static com.mop.learnprogrammingapp.FragmentMain.key_current_lesson;
 import static com.mop.learnprogrammingapp.FragmentMain.key_num_current_lesson;
-import static com.mop.learnprogrammingapp.FragmentMain.uid_user;
 
 public class AdapterCardViewLesson extends RecyclerView.Adapter<AdapterCardViewLesson.CardViewHolder> {
     private Context mContext;
@@ -66,9 +68,10 @@ public class AdapterCardViewLesson extends RecyclerView.Adapter<AdapterCardViewL
             key_current_lesson = String.valueOf(position);
             key_num_current_lesson = position;
 
-            DatabaseReference tmpDB = FirebaseDatabase.getInstance().getReference(uid_user);
-            tmpDB.child("CURRENT_COURSE").setValue(key_current_course);
-            tmpDB.child("CURRENT_LESSON").setValue(key_current_lesson);
+            mContext.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit().putString("CURRENT_COURSE", key_current_course).apply();
+            mContext.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit().putString("CURRENT_LESSON", key_current_lesson).apply();
+
+            SaveDataFirebase();
 
             FragmentTransaction ft = ((ActivityMain) mContext).getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
@@ -91,6 +94,16 @@ public class AdapterCardViewLesson extends RecyclerView.Adapter<AdapterCardViewL
             img = itemView.findViewById(R.id.imgItemCourse);
             lesson = itemView.findViewById(R.id.textViewItemCourse);
             linLayoutCard = itemView.findViewById(R.id.nestedLinLayoutItemCourse);
+        }
+    }
+
+    private void SaveDataFirebase() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            DatabaseReference tmpDB = FirebaseDatabase.getInstance().getReference(currentUser.getUid());
+            tmpDB.child("CURRENT_COURSE").setValue(key_current_course);
+            tmpDB.child("CURRENT_LESSON").setValue(key_current_lesson);
         }
     }
 }

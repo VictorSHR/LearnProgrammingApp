@@ -1,6 +1,5 @@
 package com.mop.learnprogrammingapp;
 
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;

@@ -1,10 +1,12 @@
 package com.mop.learnprogrammingapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -27,8 +29,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
+
+import static com.mop.learnprogrammingapp.FragmentMain.APP_PREFERENCES;
+import static com.mop.learnprogrammingapp.FragmentMain.key_current_course;
+import static com.mop.learnprogrammingapp.FragmentMain.key_current_lesson;
 
 public class ActivityRegistr extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
@@ -47,13 +57,12 @@ public class ActivityRegistr extends AppCompatActivity {
         setContentView(R.layout.activity_registr);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        if(!hasConnection(getApplicationContext()))
-            Toast.makeText(getApplicationContext(),
-                    "Нет соединения с интернетом!", Toast.LENGTH_LONG).show();
-
         EditText editTextNameUserAuth = findViewById(R.id.editTextNameUserAuth);
         EditText editTextLogin = findViewById(R.id.editTextEmailAuth);
         EditText editTextPass = findViewById(R.id.editTextPasswordAuth);
+
+        if(!hasConnection(getApplicationContext()))
+            Toast.makeText(getApplicationContext(), "Нет соединения с интернетом!", Toast.LENGTH_LONG).show();
 
         editTextNameUserAuth.setVisibility(View.GONE);
 
@@ -160,6 +169,28 @@ public class ActivityRegistr extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
+
+            // Надо решать. Эта штука работает асинхронно :(
+            FirebaseDatabase.getInstance().getReference(user.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            key_current_course = dataSnapshot.child("CURRENT_COURSE").getValue(String.class);
+                            key_current_lesson = dataSnapshot.child("CURRENT_LESSON").getValue(String.class);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) { }
+                    });
+
+            SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+
+            if(sharedPreferences.getString("USER_NAME", null) == null) {
+                sharedPreferences.edit().putString("USER_NAME", user.getDisplayName()).apply();
+                sharedPreferences.edit().putString("CURRENT_COURSE", key_current_course).apply();
+                sharedPreferences.edit().putString("CURRENT_LESSON", key_current_lesson).apply();
+            }
+
             Intent intent = new Intent(ActivityRegistr.this, ActivityMain.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

@@ -2,17 +2,18 @@ package com.mop.learnprogrammingapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,25 +21,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class FragmentMain extends Fragment {
+    static final String APP_PREFERENCES = "USER_DATA";
+
     static String[] LIST_COURSES = new String[]{"PYTHON", "CPLUS", "CSHARP"};
 
     static String key_current_course;
     static String key_current_lesson;
     static int key_num_current_lesson;
-    static String uid_user;
+    // static String uid_user;
 
     private CardView cardViewCurrentCourse;
     private LinearLayout linLayoutCurrentCourseCard;
@@ -60,26 +55,37 @@ public class FragmentMain extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        if(!hasConnection(Objects.requireNonNull(getContext())))
-            Toast.makeText(getContext(),
-                    "Нет соединения с интернетом!", Toast.LENGTH_LONG).show();
-
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (currentUser != null) {
-            uid_user = currentUser.getUid();
-            ((TextView) view.findViewById(R.id.textViewNameUser)).setText(currentUser.getDisplayName());
-        }
-        else
-            view.findViewById(R.id.textViewNameUser).setVisibility(View.INVISIBLE);
-
         cardViewCurrentCourse = view.findViewById(R.id.cardViewCurrentCourse);
         linLayoutCurrentCourseCard = view.findViewById(R.id.linLayoutCurrentCourseCard);
         imgCurrentCourseCard = view.findViewById(R.id.imgCurrentCourseCard);
         textViewCurrentCourseCard = view.findViewById(R.id.textViewCurrentCourseCard);
         ImageButton imgButtonSettings = view.findViewById(R.id.imgButtonSettings);
 
-        FirebaseDatabase.getInstance().getReference(uid_user)
+        /*if(!hasConnection(Objects.requireNonNull(getContext())))
+            Toast.makeText(getContext(),
+                    "Нет соединения с интернетом!", Toast.LENGTH_LONG).show();*/
+
+        SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+
+        String user_name = sharedPreferences.getString("USER_NAME", null);
+        key_current_course = sharedPreferences.getString("CURRENT_COURSE", null);
+        key_current_lesson = sharedPreferences.getString("CURRENT_LESSON", null);
+
+        if (user_name != null) ((TextView) view.findViewById(R.id.textViewNameUser)).setText(user_name);
+        else view.findViewById(R.id.textViewNameUser).setVisibility(View.INVISIBLE);
+
+        updateCurrentLesson();
+
+        /*FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            uid_user = currentUser.getUid();
+            ((TextView) view.findViewById(R.id.textViewNameUser)).setText(currentUser.getDisplayName());
+        }
+        else
+            view.findViewById(R.id.textViewNameUser).setVisibility(View.INVISIBLE);*/
+
+        /*FirebaseDatabase.getInstance().getReference(uid_user)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -90,7 +96,7 @@ public class FragmentMain extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
-        });
+        });*/
 
         RecyclerView recyclerViewPythonLessons = view.findViewById(R.id.recyclerViewPythonLessons);
         RecyclerView recyclerViewCPlusLessons = view.findViewById(R.id.recyclerViewCPlusLessons);
@@ -132,22 +138,6 @@ public class FragmentMain extends Fragment {
         });
 
         return view;
-    }
-
-    private static boolean hasConnection(final Context context) {
-        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        assert cm != null;
-
-        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (wifiInfo != null && wifiInfo.isConnected()) return true;
-
-        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if (wifiInfo != null && wifiInfo.isConnected()) return true;
-
-        wifiInfo = cm.getActiveNetworkInfo();
-        if (wifiInfo != null && wifiInfo.isConnected()) return true;
-
-        return false;
     }
 
     @SuppressLint("SetTextI18n")
