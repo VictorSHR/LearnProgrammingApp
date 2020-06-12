@@ -56,6 +56,15 @@ public class FragmentAccount extends Fragment {
             ft.replace(R.id.MainConstraintLayout, FragmentSettingsMenu.newInstance()).commit();
         });
 
+        ImageButton buttoneeee = view.findViewById(R.id.buttoner);
+        buttonSettings.setOnClickListener(view1 -> {
+            FragmentTransaction ft = Objects.requireNonNull(getActivity()).
+                    getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+            ft.replace(R.id.MainConstraintLayout, fragment_lesson_menu.newInstance()).commit();
+        });
+
         RecyclerView recycleViewGame = view.findViewById(R.id.RecyclerViewGame);
         recycleViewGame.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false));
         recycleViewGame.setHasFixedSize(true);
