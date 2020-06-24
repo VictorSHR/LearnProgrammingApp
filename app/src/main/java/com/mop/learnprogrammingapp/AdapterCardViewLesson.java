@@ -76,7 +76,7 @@ public class AdapterCardViewLesson extends RecyclerView.Adapter<AdapterCardViewL
             FragmentTransaction ft = ((ActivityMain) mContext).getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
                     R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-            ft.replace(R.id.MainConstraintLayout, FragmentCurrentLesson.newInstance()).commit();
+            ft.replace(R.id.MainConstraintLayout, fragment_lesson_menu.newInstance()).commit();
         });
     }
 
@@ -97,7 +97,7 @@ public class AdapterCardViewLesson extends RecyclerView.Adapter<AdapterCardViewL
         }
     }
 
-    private void SaveDataFirebase() {
+    static void SaveDataFirebase() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (currentUser != null) {
