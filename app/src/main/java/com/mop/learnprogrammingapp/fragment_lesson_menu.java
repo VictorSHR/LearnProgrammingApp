@@ -39,6 +39,8 @@ public class fragment_lesson_menu extends Fragment {
 
         TextView textViewCurrentLesson = rootView.findViewById(R.id.textView_name_lesson);
         Button ButtonStartLessonTheory = rootView.findViewById(R.id.button_start_lesson_theory);
+        Button ButtonStartPractice = rootView.findViewById(R.id.button_start_practice);
+        Button ButtonStartControl = rootView.findViewById(R.id.button_start_control);
 
         textViewCurrentLesson.setText(key_current_course+" Урок №"+String.valueOf(Integer.parseInt(key_current_lesson)+1));
 
@@ -54,6 +56,29 @@ public class fragment_lesson_menu extends Fragment {
             ft.replace(R.id.MainConstraintLayout, FragmentCurrentLesson.newInstance()).commit();
         });
 
+        ButtonStartPractice.setOnClickListener(view1 -> {
+            getContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit().putString("CURRENT_COURSE", key_current_course).apply();
+            getContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit().putString("CURRENT_LESSON", key_current_lesson).apply();
+
+            SaveDataFirebase();
+
+            FragmentTransaction ft = ((ActivityMain) getContext()).getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+            ft.replace(R.id.MainConstraintLayout, FragmentPracticeLesson.newInstance()).commit();
+        });
+
+        ButtonStartControl.setOnClickListener(view1 -> {
+            getContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit().putString("CURRENT_COURSE", key_current_course).apply();
+            getContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit().putString("CURRENT_LESSON", key_current_lesson).apply();
+
+            SaveDataFirebase();
+
+            FragmentTransaction ft = ((ActivityMain) getContext()).getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+            ft.replace(R.id.MainConstraintLayout, FragmentCurrentLesson.newInstance()).commit();
+        });
 
         return rootView;
     }
